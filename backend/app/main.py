@@ -1,0 +1,44 @@
+import os
+import uvicorn
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.api.v1 import chat, screen
+
+app = FastAPI(
+    title="SpectrumLens AI API",
+    description="Backend for AI-driven autism behavioral screening and live tracking.",
+    version="1.0.0"
+)
+
+
+origins = [
+    "http://localhost:3000",          
+   
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],              
+    allow_headers=["*"],              
+)
+
+app.include_router(chat.router, prefix="/api/v1/chat", tags=["AI Chat"])
+app.include_router(screen.router, prefix="/api/v1/screen", tags=["Screening"])
+
+@app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "message": "SpectrumLens Neural Engine is running",
+        "environment": os.environ.get("ENVIRONMENT", "development"),
+        "docs": "/docs"
+    }
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=True)
