@@ -3,7 +3,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import chat, screen
+from api.v1 import chat, screen
 
 app = FastAPI(
     title="SpectrumLens AI API",
@@ -13,8 +13,8 @@ app = FastAPI(
 
 
 origins = [
-    "http://localhost:3000",          
-   
+    "http://localhost:3000", 
+    "https://spectrum-lens.vercel.app/",
 ]
 
 app.add_middleware(
