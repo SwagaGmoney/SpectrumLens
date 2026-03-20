@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
 
-from app.models.schema import ChatMessage, ScreeningResults, ChatRequest
-from app.engine.behavior_agent import extract_traits_from_chat
-from app.engine.scoring_logic import calculate_autism_score
+from models.schema import ChatMessage, ScreeningResults, ChatRequest
+from engine.behavior_agent import extract_traits_from_chat
+from engine.scoring_logic import calculate_autism_score
 
 router = APIRouter()
 
