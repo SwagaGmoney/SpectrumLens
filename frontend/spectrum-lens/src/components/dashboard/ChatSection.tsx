@@ -55,7 +55,7 @@ export default function ChatSection({ onAnalysisUpdate }: ChatSectionProps) {
         content: msg.content
       }));
 
-      const response = await fetch("http://localhost:8000/api/v1/chat", {
+      const response = await fetch("https://spectrumlens.onrender.com/api/v1/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
