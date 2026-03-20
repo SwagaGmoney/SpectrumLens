@@ -40,18 +40,18 @@ app.add_middleware(
 app.include_router(chat.router, prefix="/api/v1/chat", tags=["AI Chat"])
 app.include_router(screen.router, prefix="/api/v1/screen", tags=["Screening"])
 
-@app.get("/")  
-async def base_root():
-    return {"message": "SpectrumLens API is Live. Visit /api/docs for documentation."}
-
-@app.get("/api")
+@app.get("/")
 async def root():
     return {
         "status": "online",
-        "message": "SpectrumLens Neural Engine is running",
-        "environment": os.environ.get("ENVIRONMENT", "development"),
+        "message": "SpectrumLens API is Live",
         "docs": "/api/docs"
     }
+
+@app.get("/api/health")
+async def health():
+    return {"status": "healthy"}
+
 
 
 if __name__ == "__main__":
