@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "backend/app/main.py": {
-      "runtime": "python3.12"
+      "runtime": "@vercel/python"
     }
   },
   "rewrites": [
