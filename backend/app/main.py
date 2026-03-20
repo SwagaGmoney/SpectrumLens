@@ -20,6 +20,7 @@ app = FastAPI(
     title="SpectrumLens AI API",
     description="Backend for AI-driven autism behavioral screening and live tracking.",
     version="1.0.0"
+    docs_url="/api/docs",
 )
 
 
